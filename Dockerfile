@@ -3,14 +3,11 @@ FROM node:10-alpine
 #Direktori Kerja
 WORKDIR /home/app
 #Install PM2 secara global
-RUN npm install -g pm2
+RUN npm install -g pm2 sequelize-cli
 #Copy semua kode aplikasi
 COPY . .
 #Install dependency
 RUN npm install
-
-RUN npm install sequelize-cli -g
-RUN npx sequelize db:migrate
 #Port
 EXPOSE 5000
 #Jalankan dengan PM2 Runtime

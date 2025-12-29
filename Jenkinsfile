@@ -59,5 +59,15 @@ pipeline {
                 }
             }
         }
+        stage('db migrate') {
+            steps {
+                sshagent([cred]) {
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
+                    docker exec ${containerName} npx sequelize db:migrate
+                    exit
+                    EOF"""
+                }
+            }
+        }
     }
 }
