@@ -3,7 +3,7 @@ def remote = "origin"
 def directory = "~/dumbwaysapp/wayshub-backend"
 def server = "genabc@103.103.23.200"
 def cred = "devops"
-def imageName = "dumbflix-be"
+def imageName = "wayshub-be"
 def containerName = "backend"
 
 pipeline {

@@ -8,6 +8,9 @@ RUN npm install -g pm2
 COPY . .
 #Install dependency
 RUN npm install
+
+RUN npm install sequelize-cli -g
+RUN npx sequelize db:migrate
 #Port
 EXPOSE 5000
 #Jalankan dengan PM2 Runtime
