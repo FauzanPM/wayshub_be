@@ -3,7 +3,7 @@
     "username": "root",
     "password": "root",
     "database": "wayshub",
-    "host": "host.docker.internal",
+    "host": "127.17.0.1",
     "dialect": "mysql"
   },
   "test": {
