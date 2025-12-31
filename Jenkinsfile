@@ -74,10 +74,6 @@ pipeline {
                 }
             }
         }
-#	stage('test backend') {
-#    		steps {
-#        		sh 'wget --spider https://api.team.studentdumbways.my.id'
-#    		}
-#	}
+
     }
 }
