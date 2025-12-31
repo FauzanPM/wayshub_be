@@ -61,7 +61,7 @@ pipeline {
                     ${imageName}
                     exit
                     EOF"""
-S                }
+                }
             }
         }
         stage('db migrate') {
