@@ -4,7 +4,7 @@ def directory = "~/dumbwaysapp/wayshub-backend"
 def server = "genabc@103.103.23.200"
 def cred = "devops"
 def imageName = "wayshub-be"
-def containerName = "backend"
+def containerName = "wayshub-be"
 
 pipeline {
     agent any
