@@ -2,7 +2,7 @@
 FROM node:10-alpine
 #Direktori Kerja
 WORKDIR /home/app
-#Install PM2 secara global
+#Install tools yang diperlukan
 RUN npm install -g pm2 sequelize-cli
 #Copy semua kode aplikasi
 COPY . .
