@@ -8,6 +8,11 @@ def containerName = "backend"
 
 pipeline {
     agent any
+
+	triggers {
+                githubPush()
+        }
+
     stages {
 
         stage('repo pull') {
@@ -56,7 +61,7 @@ pipeline {
                     ${imageName}
                     exit
                     EOF"""
-                }
+S                }
             }
         }
         stage('db migrate') {
