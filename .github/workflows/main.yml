@@ -2,7 +2,7 @@ name: Wayshub Backend CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 env:
@@ -19,7 +19,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Login to registry
+      - name: Login to private registry
         run: |
           echo "${{ secrets.REGISTRY_PASS }}" | docker login $REGISTRY \
             -u "${{ secrets.REGISTRY_USER }}" --password-stdin
@@ -38,10 +38,10 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_KEY }}
+          envs: REGISTRY,IMAGE_NAME,IMAGE_TAG,APP_PORT
           script: |
-            docker login $REGISTRY \
-              -u "${{ secrets.REGISTRY_USER }}" \
-              -p "${{ secrets.REGISTRY_PASS }}"
+            echo "${{ secrets.REGISTRY_PASS }}" | docker login $REGISTRY \
+              -u "${{ secrets.REGISTRY_USER }}" --password-stdin
 
             docker pull $REGISTRY/$IMAGE_NAME:$IMAGE_TAG
 
@@ -50,7 +50,8 @@ jobs:
 
             docker run -d \
               --name wayshub-be \
-              -p 5000:5000 \
+              -p $APP_PORT:$APP_PORT \
               $REGISTRY/$IMAGE_NAME:$IMAGE_TAG
 
             docker exec wayshub-be npx sequelize db:migrate
+
