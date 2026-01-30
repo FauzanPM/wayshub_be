@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "devops_user",
-    "password": "KopiHitam12!",
+    "username": "fauzan",
+    "password": "devops123",
     "database": "wayshub",
-    "host": "103.103.23.200",
+    "host": "3.27.119.102",
     "dialect": "mysql"
   },
   "test": {
